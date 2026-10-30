@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UP好物推荐合集</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header>
+            <div class="title-area">
+                <h1>UP好物推荐合集</h1>
+                <div class="video-link-area" id="videoLinkArea"></div>
+            </div>
+            
+            <div class="search-area">
+                <!-- 新增：显眼的免责声明按钮 -->
+                <button class="disclaimer-btn" id="openDisclaimerBtn">
+                    <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    免责声明
+                </button>
+
+                <div class="search-input-wrapper">
+                    <input type="text" id="searchInput" placeholder="搜索好物名称或品牌...">
+                </div>
+                <button class="search-btn">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- 滑动导航栏 -->
+        <div class="nav-wrapper">
+            <nav id="mainNav"></nav>
+        </div>
+
+        <!-- 卡片网格 -->
+        <main class="grid" id="cardGrid"></main>
+    </div>
+
+    <!-- 免责声明弹窗 -->
+    <div id="disclaimerModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>免责声明</h2>
+                <button class="close-btn" id="closeModalBtn">
+                    <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>* 本网页由粉丝整理制作，展示的所有商品及链接均提取自 B站 UP主「逛拼多多的品检员」的公开视频内容，不含任何商业推广成分，仅供交流学习。</p>
+                <p>如涉及版权问题或链接失效，请联系（您的邮箱@xxx.com），我们会尽快修改。</p>
+                <p>商品的价格、规格、质量及售后服务均以第三方电商平台（拼多多、淘宝等）实时页面为准。购买前请仔细核对，本网页不对任何交易过程承担连带责任。</p>
+            </div>
+            <div class="modal-footer">
+                <button class="confirm-btn" id="confirmModalBtn">我知道了！</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
