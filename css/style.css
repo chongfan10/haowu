@@ -1,3 +1,6 @@
+/* ==========================================
+   1. 根变量定义 & 基础重置
+   ========================================== */
 :root {
     --bg-color: #e5ebf4;
     --text-main: #2c3e50;
@@ -12,7 +15,12 @@
     --tag-rec-text: #d68b0b;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; /* 去除手机点击时的蓝色高亮块 */ }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    -webkit-tap-highlight-color: transparent;
+}
 
 body {
     background-color: var(--bg-color);
@@ -26,21 +34,21 @@ body {
 
 .container { width: 100%; max-width: 1280px; }
 
-/* 头部 */
+/* ==========================================
+   2. 头部区域
+   ========================================== */
 header {
     display: flex; justify-content: space-between; align-items: flex-end;
     margin-bottom: 30px; flex-wrap: wrap; gap: 20px;
 }
-.title-area h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+.title-area h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; letter-spacing: 0.5px; }
 .video-link-area { color: var(--text-sub); font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.video-link-area a { color: var(--text-main); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+.video-link-area a { color: var(--text-main); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
 .video-link-area a:hover { color: var(--accent-color); }
 .bili-icon { width: 16px; height: 16px; fill: currentColor; }
 
-/* 搜索区 */
 .search-area { display: flex; align-items: center; gap: 12px; }
 
-/* 免责声明按钮 */
 .disclaimer-btn {
     display: flex; align-items: center; gap: 6px; padding: 12px 18px;
     border: none; border-radius: 25px; background: var(--bg-color);
@@ -56,26 +64,28 @@ header {
 .search-input-wrapper input {
     width: 100%; padding: 14px 20px; border: none; border-radius: 25px; background: var(--bg-color);
     box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
-    outline: none; color: var(--text-main); font-size: 15px; /* 15px 在部分手机上依然会触发放大，移动端会强制改16 */
+    outline: none; color: var(--text-main); font-size: 15px;
 }
 .search-btn {
     width: 46px; height: 46px; border-radius: 50%; border: none; background: var(--bg-color);
     box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
     cursor: pointer; display: flex; justify-content: center; align-items: center; color: var(--text-sub);
-    flex-shrink: 0;
+    flex-shrink: 0; transition: all 0.2s;
 }
 .search-btn:active { box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light); }
 .search-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
-/* 滑动导航栏 */
+/* ==========================================
+   3. 导航栏 (可滑动)
+   ========================================== */
 .nav-wrapper { width: 100%; overflow: hidden; padding: 10px 0; margin-bottom: 20px; }
 nav { 
     display: flex; gap: 12px; overflow-x: auto; white-space: nowrap; 
-    scrollbar-width: none; /* Firefox 隐藏滚动条 */
-    -webkit-overflow-scrolling: touch; /* 手机端滑动增加惯性 */
-    padding-bottom: 8px; 
+    scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 8px; 
+    cursor: grab; user-select: none;
 }
-nav::-webkit-scrollbar { display: none; /* Chrome 隐藏滚动条让滑动更顺滑 */ }
+nav:active { cursor: grabbing; }
+nav::-webkit-scrollbar { display: none; }
 
 nav button {
     flex-shrink: 0; padding: 10px 24px; border: none; border-radius: 8px; background: var(--bg-color);
@@ -91,31 +101,95 @@ nav button.active {
 nav button.icon-btn { padding: 10px 16px; }
 nav button.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
-/* 卡片网格 */
+/* ==========================================
+   4. 卡片网格与卡片样式
+   ========================================== */
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 .card {
     background: var(--bg-color); border-radius: var(--border-radius); padding: 16px;
     box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
-    display: flex; flex-direction: column; position: relative; transition: transform 0.2s;
+    display: flex; flex-direction: column; position: relative; transition: transform 0.2s, box-shadow 0.2s;
 }
-.card-image-wrapper { width: 100%; height: 180px; border-radius: 12px; overflow: hidden; margin-bottom: 16px; background-color: #dce4f0; }
-.card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.card:hover { transform: translateY(-3px); box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light); }
+
+.card-image-wrapper { 
+    width: 100%; height: 180px; border-radius: 12px; overflow: hidden; 
+    margin-bottom: 16px; background-color: #dce4f0; 
+    position: relative; display: flex; justify-content: center; align-items: center;
+}
+.card-image-wrapper img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.3s; width: 100%; height: 100%; }
+.card:hover .card-image-wrapper img { transform: scale(1.05); }
+
+.img-placeholder {
+    width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, #dce4f0, #e5ebf4); color: var(--text-sub); font-size: 14px; font-weight: 500; letter-spacing: 1px;
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+}
+.img-placeholder svg { width: 32px; height: 32px; fill: currentColor; opacity: 0.6; }
 
 .card-tags { position: absolute; top: 24px; right: 24px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 10; }
-.tag { font-size: 12px; padding: 4px 10px; border-radius: 20px; font-weight: 600; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
+.tag { font-size: 12px; padding: 4px 10px; border-radius: 20px; font-weight: 600; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); backdrop-filter: blur(4px); }
 .tag.category { background: rgba(220, 228, 240, 0.9); color: var(--tag-text); }
 .tag.rec { background: rgba(252, 235, 210, 0.9); color: var(--tag-rec-text); }
 
 .card-content { padding: 0 8px 8px 8px; display: flex; flex-direction: column; flex-grow: 1; }
-.card-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
-.card-desc { font-size: 13px; color: var(--text-sub); margin-bottom: 16px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* 🌟 排版优化：标题与价格行 */
+.card-title-row { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 12px; 
+    margin-bottom: 8px; 
+}
+/* 标题：占据剩余空间，允许换行，防止被挤压成单列 */
+.card-title { 
+    font-size: 18px; 
+    font-weight: 600; 
+    line-height: 1.4; 
+    flex: 1; 
+    word-break: break-all; /* 允许中英文长词换行 */
+    margin-bottom: 0; 
+}
+/* 价格：限制最大宽度50%，超长自动换行，右对齐 */
+.card-price { 
+    color: var(--text-main); 
+    font-size: 14px; 
+    font-weight: 700; 
+    text-align: right;
+    max-width: 50%; /* 防止太长挤爆标题 */
+    word-break: break-all;
+    line-height: 1.4;
+}
+
+.card-desc { font-size: 13px; color: var(--text-sub); margin-bottom: 12px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-comment {
+    font-size: 13px; color: var(--text-main); background: rgba(220, 228, 240, 0.4);
+    padding: 8px 12px; border-radius: 8px; margin-bottom: 16px; line-height: 1.5;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
 .card-footer { display: flex; justify-content: space-between; align-items: center; font-size: 13px; border-top: 1px solid rgba(195, 203, 216, 0.4); padding-top: 12px; margin-top: auto; }
 .card-platform { color: var(--text-sub); }
-.card-link { color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 4px; font-weight: 500; padding: 4px 8px; border-radius: 6px; }
+.card-link { color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 4px; font-weight: 500; padding: 4px 8px; border-radius: 6px; transition: color 0.2s, background 0.2s; }
+.card-link:hover { color: var(--accent-color); }
 .card-link.disabled { color: var(--text-sub); pointer-events: none; opacity: 0.6; }
 .card-link svg { width: 14px; height: 14px; fill: currentColor; }
 
-/* 弹窗样式 */
+/* ==========================================
+   5. 空状态与加载动画
+   ========================================== */
+.empty-state {
+    grid-column: 1 / -1; text-align: center; color: var(--text-sub); padding: 60px 20px;
+    font-size: 16px; background: var(--bg-color); border-radius: var(--border-radius);
+    box-shadow: inset 6px 6px 14px var(--shadow-dark), inset -6px -6px 14px var(--shadow-light);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+
+/* ==========================================
+   6. 弹窗样式
+   ========================================== */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(229, 235, 244, 0.7); backdrop-filter: blur(4px);
@@ -131,89 +205,52 @@ nav button.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
 .modal-overlay.show .modal-box { transform: translateY(0); }
 .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid rgba(195, 203, 216, 0.4); }
 .modal-header h2 { font-size: 20px; color: var(--text-main); font-weight: 700; }
-.close-btn { background: none; border: none; cursor: pointer; color: var(--text-sub); padding: 4px; border-radius: 50%; display: flex; }
+.close-btn { background: none; border: none; cursor: pointer; color: var(--text-sub); padding: 4px; border-radius: 50%; display: flex; transition: all 0.2s; }
+.close-btn:hover { background: #dce4f0; color: var(--text-main); }
 .close-btn svg { width: 24px; height: 24px; fill: currentColor; }
-.modal-body { padding: 24px; font-size: 15px; color: var(--text-sub); line-height: 1.8; max-height: 60vh; overflow-y: auto; /* 屏幕太小时支持弹窗内滚动 */ }
+.modal-body { padding: 24px; font-size: 15px; color: var(--text-sub); line-height: 1.8; max-height: 60vh; overflow-y: auto; }
 .modal-body p { margin-bottom: 12px; }
 .modal-footer { padding: 0 24px 24px 24px; }
 .confirm-btn {
     width: 100%; padding: 14px; border: none; border-radius: 12px; background: var(--bg-color);
     box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
-    color: var(--text-main); font-size: 16px; font-weight: 600; cursor: pointer;
+    color: var(--text-main); font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.1s;
 }
 .confirm-btn:active { box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light); }
 
 /* ==========================================
-   📱 手机端专属适配 (核心优化)
+   7. 移动端专属适配
    ========================================== */
+@media (max-width: 1024px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 768px) {
     body { padding: 15px; }
-    
-    /* 头部布局重排 */
     header { flex-direction: column; align-items: stretch; gap: 15px; margin-bottom: 20px; }
     .title-area h1 { font-size: 26px; margin-bottom: 8px; }
     .video-link-area { font-size: 13px; }
-    
-    /* 搜索区：支持换行或自适应 */
-    .search-area { 
-        display: flex; 
-        flex-wrap: wrap; /* 允许换行，防止小屏幕挤爆 */
-        justify-content: space-between;
-        gap: 10px; 
-    }
-    .search-input-wrapper { 
-        flex: 1; /* 自动占满剩余空间 */
-        min-width: 180px;
-        order: 1; 
-    }
-    .search-input-wrapper input { 
-        font-size: 16px; /* 🚨 关键：防止 iOS 点击输入框时网页自动放大 */
-        padding: 12px 16px; 
-    }
+    .search-area { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+    .search-input-wrapper { flex: 1; min-width: 180px; order: 1; }
+    .search-input-wrapper input { font-size: 16px; padding: 12px 16px; }
     .search-btn { width: 42px; height: 42px; order: 2; }
-    
-    /* 免责声明按钮 */
-    .disclaimer-btn { 
-        order: 3; 
-        padding: 10px 14px; 
-        font-size: 13px;
-        width: 100%; /* 手机上让按钮独占一行，更好点 */
-        justify-content: center;
-    }
-
-    /* 导航栏 */
+    .disclaimer-btn { order: 3; padding: 10px 14px; font-size: 13px; width: 100%; justify-content: center; }
     .nav-wrapper { padding: 5px 0; margin-bottom: 15px; }
-    nav button { padding: 10px 18px; font-size: 14px; min-height: 44px; /* 保证手指能点中 */ }
-    
-    /* 卡片网格改为单列 */
+    nav button { padding: 10px 18px; font-size: 14px; min-height: 44px; }
     .grid { grid-template-columns: 1fr; gap: 20px; }
-    
-    /* 卡片内部微调 */
     .card { padding: 12px; }
-    .card-image-wrapper { height: 200px; /* 手机上图片稍微高一点更好看 */ }
-    .card-title { font-size: 17px; margin-top: 4px; }
-    .card-desc { font-size: 13px; margin-bottom: 12px; }
-    
-    /* 底部：购物平台与跳转按钮 */
-    .card-footer { 
-        padding-top: 14px;
-        align-items: center; 
-    }
+    .card-image-wrapper { height: 220px; }
+    .img-placeholder { font-size: 13px; }
+    .img-placeholder svg { width: 28px; height: 28px; }
+    .card-title-row { margin-top: 4px; gap: 8px; }
+    .card-title { font-size: 17px; }
+    .card-price { font-size: 14px; max-width: 45%; } /* 手机端价格区域收窄一点 */
+    .card-desc { font-size: 13px; margin-bottom: 10px; }
+    .card-comment { font-size: 12px; padding: 6px 10px; margin-bottom: 12px; }
+    .card-footer { padding-top: 14px; align-items: center; }
     .card-platform { font-size: 12px; }
-    
-    /* 点击“去看看”按钮增加更明显的触控反馈 */
-    .card-link { 
-        font-size: 14px; 
-        font-weight: 600;
-        background: rgba(255,255,255, 0.5); /* 给按钮加个淡淡的底色，更像按钮 */
-        padding: 6px 12px; 
-        border-radius: 20px;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-    }
+    .card-link { font-size: 14px; font-weight: 600; background: rgba(255,255,255, 0.5); padding: 6px 12px; border-radius: 20px; box-shadow: 2px 2px 5px rgba(0,0,0,0.05); }
     .card-link:active { transform: scale(0.95); background: #dce4f0; }
     .card-link svg { width: 16px; height: 16px; }
-
-    /* 弹窗适配 */
     .modal-box { width: 95%; max-height: 90vh; }
     .modal-body { font-size: 14px; padding: 20px; }
     .modal-header { padding: 15px 20px; }

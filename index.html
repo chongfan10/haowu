@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UP好物推荐合集</title>
+    <title>UP好物推荐合集 | 逛拼多多的品检员</title>
+    
+    <!-- 增加 SEO 和分享卡片优化 -->
+    <meta name="description" content="整理自B站UP主「逛拼多多的品检员」的平价好物推荐合集，包含各期商品分类、购买平台及官方旗舰店链接。">
+    <meta property="og:title" content="UP好物推荐合集">
+    <meta property="og:description" content="全网最良心的品检员好物整理，支持按分类、期数检索。">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,11 +18,13 @@
         <header>
             <div class="title-area">
                 <h1>UP好物推荐合集</h1>
-                <div class="video-link-area" id="videoLinkArea"></div>
+                <div class="video-link-area" id="videoLinkArea">
+                    <!-- 加个加载中的骨架提示，防止加载闪烁 -->
+                    <span style="opacity: 0.5;">正在加载传送门...</span>
+                </div>
             </div>
             
             <div class="search-area">
-                <!-- 新增：显眼的免责声明按钮 -->
                 <button class="disclaimer-btn" id="openDisclaimerBtn">
                     <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
                     免责声明
@@ -31,16 +39,17 @@
             </div>
         </header>
 
-        <!-- 滑动导航栏 -->
         <div class="nav-wrapper">
             <nav id="mainNav"></nav>
         </div>
 
-        <!-- 卡片网格 -->
-        <main class="grid" id="cardGrid"></main>
+        <main class="grid" id="cardGrid">
+            <!-- 预置骨架屏效果，JS执行完后会覆盖这里 -->
+            <div class="empty-state">正在加载好物数据...</div>
+        </main>
     </div>
 
-    <!-- 免责声明弹窗 -->
+    <!-- 弹窗 -->
     <div id="disclaimerModal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-header">
@@ -60,7 +69,9 @@
         </div>
     </div>
 
+    <!-- 注意引用顺序：先数据，再工具，最后主逻辑 -->
     <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
