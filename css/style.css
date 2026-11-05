@@ -112,12 +112,18 @@ nav button.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
 }
 .card:hover { transform: translateY(-3px); box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light); }
 
+/* 图片容器 */
 .card-image-wrapper { 
     width: 100%; height: 180px; border-radius: 12px; overflow: hidden; 
     margin-bottom: 16px; background-color: #dce4f0; 
     position: relative; display: flex; justify-content: center; align-items: center;
 }
-.card-image-wrapper img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.3s; width: 100%; height: 100%; }
+/* 图片加上 cursor: pointer 提示可点击 */
+.card-image-wrapper img { 
+    max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.3s; 
+    width: 100%; height: 100%; 
+    cursor: pointer; 
+}
 .card:hover .card-image-wrapper img { transform: scale(1.05); }
 
 .img-placeholder {
@@ -134,7 +140,7 @@ nav button.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
 .card-content { padding: 0 8px 8px 8px; display: flex; flex-direction: column; flex-grow: 1; }
 
-/* 🌟 排版优化：标题与价格行 */
+/* 标题与价格行 */
 .card-title-row { 
     display: flex; 
     justify-content: space-between; 
@@ -142,22 +148,20 @@ nav button.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
     gap: 12px; 
     margin-bottom: 8px; 
 }
-/* 标题：占据剩余空间，允许换行，防止被挤压成单列 */
 .card-title { 
     font-size: 18px; 
     font-weight: 600; 
     line-height: 1.4; 
     flex: 1; 
-    word-break: break-all; /* 允许中英文长词换行 */
+    word-break: break-all;
     margin-bottom: 0; 
 }
-/* 价格：限制最大宽度50%，超长自动换行，右对齐 */
 .card-price { 
     color: var(--text-main); 
     font-size: 14px; 
     font-weight: 700; 
     text-align: right;
-    max-width: 50%; /* 防止太长挤爆标题 */
+    max-width: 50%; 
     word-break: break-all;
     line-height: 1.4;
 }
@@ -188,7 +192,7 @@ nav button.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
 @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
 
 /* ==========================================
-   6. 弹窗样式
+   6. 弹窗样式 (免责声明)
    ========================================== */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -219,7 +223,34 @@ nav button.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
 .confirm-btn:active { box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light); }
 
 /* ==========================================
-   7. 移动端专属适配
+   7. 🌟 图片预览模态框样式 (无下载按钮)
+   ========================================== */
+.image-preview-modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px);
+    display: flex; justify-content: center; align-items: center; z-index: 10000;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.image-preview-modal.show { opacity: 1; visibility: visible; }
+.image-preview-content {
+    position: relative; max-width: 90%; max-height: 90vh;
+    display: flex; justify-content: center; align-items: center;
+}
+.image-preview-content img {
+    max-width: 100%; max-height: 85vh; object-fit: contain;
+    border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: #fff;
+}
+.close-preview-btn {
+    position: absolute; top: -50px; right: -10px;
+    background: none; border: none; cursor: pointer; color: #fff;
+    padding: 8px; border-radius: 50%; transition: all 0.2s;
+}
+.close-preview-btn:hover { background: rgba(255,255,255,0.2); }
+.close-preview-btn svg { width: 32px; height: 32px; fill: currentColor; }
+
+/* ==========================================
+   8. 移动端专属适配
    ========================================== */
 @media (max-width: 1024px) {
     .grid { grid-template-columns: repeat(2, 1fr); }
@@ -243,7 +274,7 @@ nav button.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
     .img-placeholder svg { width: 28px; height: 28px; }
     .card-title-row { margin-top: 4px; gap: 8px; }
     .card-title { font-size: 17px; }
-    .card-price { font-size: 14px; max-width: 45%; } /* 手机端价格区域收窄一点 */
+    .card-price { font-size: 14px; max-width: 45%; }
     .card-desc { font-size: 13px; margin-bottom: 10px; }
     .card-comment { font-size: 12px; padding: 6px 10px; margin-bottom: 12px; }
     .card-footer { padding-top: 14px; align-items: center; }
@@ -255,4 +286,8 @@ nav button.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
     .modal-body { font-size: 14px; padding: 20px; }
     .modal-header { padding: 15px 20px; }
     .modal-footer { padding: 0 20px 20px 20px; }
+    
+    /* 移动端预览图适配 */
+    .close-preview-btn { top: -45px; right: 0; }
+    .image-preview-content img { max-height: 75vh; }
 }

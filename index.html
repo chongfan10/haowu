@@ -69,6 +69,17 @@
         </div>
     </div>
 
+    <!-- 🌟 图片预览弹窗 (去除了保存按钮) -->
+    <div id="imagePreviewModal" class="image-preview-modal">
+        <div class="image-preview-content">
+            <button class="close-preview-btn" id="closePreviewBtn">
+                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+            <!-- 大图展示区域 -->
+            <img id="previewImg" src="" alt="商品大图">
+        </div>
+    </div>
+
     <!-- 注意引用顺序：先数据，再工具，最后主逻辑 -->
     <script src="js/data.js"></script>
     <script src="js/utils.js"></script>

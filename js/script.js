@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer" class="card-link">${window.icons.link}去看看</a>` 
                 : `<span class="card-link disabled">暂无链接</span>`;
 
-            const recTag = currentEpisode === 'all' ? `${item.episodeTag}` : item.rec;
             const platformText = window.getPlatformText(item.platform);
             const priceText = item.price !== '价格待定' ? `¥ ${item.price}` : item.price;
 
@@ -99,11 +98,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
 
+            // 🌟 核心修改：判断是否需要显示期数标签
+            // 当 currentEpisode 为 'all' 时（此时不管是在看全部，还是切到了分类），都显示期数
+            // 当 currentEpisode 为具体某一期时，隐藏期数标签
+            let episodeTagHTML = '';
+            if (currentEpisode === 'all') {
+                episodeTagHTML = `<span class="tag episode">${item.episodeTag}</span>`;
+            }
+
             cardHtml += `
                 <div class="card">
                     <div class="card-tags">
                         <span class="tag category">${item.category}</span>
-                        <span class="tag rec">${recTag}</span>
+                        ${episodeTagHTML}
+                        <span class="tag rec">${item.rec}</span>
                     </div>
                     <div class="card-image-wrapper">
                         ${imageHTML}
@@ -184,7 +192,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 4. 弹窗逻辑
+    // 4. 图片预览逻辑
+    // ==========================================
+    const imgPreviewModal = document.getElementById('imagePreviewModal');
+    const previewImg = document.getElementById('previewImg');
+    const closePreviewBtn = document.getElementById('closePreviewBtn');
+
+    cardGrid.addEventListener('click', (e) => {
+        if (e.target.tagName === 'IMG') {
+            previewImg.src = e.target.src;
+            imgPreviewModal.classList.add('show');
+        }
+    });
+
+    function closePreview() {
+        imgPreviewModal.classList.remove('show');
+        setTimeout(() => { previewImg.src = ''; }, 300);
+    }
+
+    closePreviewBtn.addEventListener('click', closePreview);
+    imgPreviewModal.addEventListener('click', (e) => {
+        if (e.target === imgPreviewModal) closePreview();
+    });
+
+    // ==========================================
+    // 5. 免责声明弹窗逻辑
     // ==========================================
     const modal = document.getElementById('disclaimerModal');
     const openBtn = document.getElementById('openDisclaimerBtn');
