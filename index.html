@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UP好物推荐合集 | 逛拼多多的品检员</title>
+    
+    <meta name="description" content="整理自B站UP主「逛拼多多的品检员」的平价好物推荐合集，包含各期商品分类、购买平台及官方旗舰店链接。">
+    <meta property="og:title" content="UP好物推荐合集">
+    <meta property="og:description" content="全网最良心的品检员好物整理，支持按分类、期数检索。">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header>
+            <div class="title-area">
+                <h1>UP好物推荐合集</h1>
+                <div class="video-link-area" id="videoLinkArea">
+                    <!-- 加载提示 -->
+                    <span style="opacity: 0.5;">正在加载传送门...</span>
+                </div>
+            </div>
+            
+            <div class="search-area">
+                <button class="disclaimer-btn" id="openDisclaimerBtn">
+                    <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    免责声明
+                </button>
+
+                <div class="search-input-wrapper">
+                    <input type="text" id="searchInput" placeholder="搜索好物名称或品牌...">
+                    <button id="clearSearchBtn" class="clear-btn" title="清空">
+                        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                    </button>
+                </div>
+                <button class="search-btn">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- 顶层分类切换 -->
+        <div id="mainTabs" class="main-tabs"></div>
+
+        <!-- 导航栏重构：左侧固定，右侧滚动 -->
+        <div class="nav-wrapper">
+            <div id="fixedNavArea" class="fixed-nav-area"></div>
+            <div class="nav-scroll-wrapper">
+                <nav id="mainNav"></nav>
+            </div>
+        </div>
+
+        <!-- 卡片网格 -->
+        <main class="grid" id="cardGrid">
+            <div class="empty-state">正在加载好物数据...</div>
+        </main>
+
+        <!-- 🌟 新增：分页容器 -->
+        <div id="pagination" class="pagination"></div>
+    </div>
+
+    <!-- 免责声明弹窗 -->
+    <div id="disclaimerModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>免责声明</h2>
+                <button class="close-btn" id="closeModalBtn">
+                    <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>* 本网页由粉丝整理制作，展示的所有商品及链接均提取自 B站 UP主「逛拼多多的品检员」的公开视频内容，不含任何商业推广成分，仅供交流学习。</p>
+                <p>如涉及版权问题或链接失效，请联系（您的邮箱@xxx.com），我们会尽快修改。</p>
+                <p>如发现旗舰店产品价格过高，可查询专卖店是否有此类产品</p>                
+                <p>注意：部分品牌是矩阵玩法，多个店铺同时卖。专卖店是授权的，非主品或者贴牌的会在专卖店售卖，请酌情购买</p>
+                <p>商品的价格、规格、质量及售后服务均以第三方电商平台（拼多多、淘宝、1688等）实时页面为准。购买前请仔细核对，本网页不对任何交易过程承担连带责任。</p>
+            </div>
+            <div class="modal-footer">
+                <button class="confirm-btn" id="confirmModalBtn">我知道了！</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片预览模态框 -->
+    <div id="imagePreviewModal" class="image-preview-modal">
+        <div class="image-preview-content">
+            <button class="close-preview-btn" id="closePreviewBtn">
+                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+            <img id="previewImg" src="" alt="商品大图">
+        </div>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <div id="backToTop" class="back-to-top" title="回到顶部">
+        <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+        <span>顶部</span>
+    </div>
+
+    <!-- 引用顺序 -->
+    <script src="js/data.js"></script>
+    <script src="js/special_data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
