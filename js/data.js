@@ -233,7 +233,7 @@ U型枕|POE居家布艺|家居日用|UP主推荐|拼多多|https://mobile.yangke
 
 羽绒服|拓路者|服饰内衣|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=pms7MsDbb4||260-2600|冲锋衣、羽绒服都可
 
-四件套|华纺|家居日用|UP主推荐|拼多多||||源头厂家：已注销
+四件套|华纺|家居日用|UP主推荐|拼多多||||店铺注销
 
 四件套|愉悦之家|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=WahCiamjgP||49-669|源头厂家
 
@@ -317,7 +317,7 @@ U型枕|POE居家布艺|家居日用|UP主推荐|拼多多|https://mobile.yangke
 
 陶瓷餐具(价格实惠)|以辰|厨房用具|UP主推荐|淘宝|https://m.tb.cn/h.j89E5ph1yjwmqk1|images/ep17/a1.webp|3-4250|
 
-陶瓷餐具|玉柏陶瓷|厨房用具|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=VQ1erjuvIy|images/ep17/a2.webp|66-4580|up推荐店铺注销
+陶瓷餐具|玉柏陶瓷|厨房用具|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=VQ1erjuvIy|images/ep17/a2.webp|66-4580|店铺注销
 
 棉拖|朴西|鞋类箱包|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=hBWMtnZ5R4|images/ep17/b.webp|49.8|
 
@@ -688,7 +688,7 @@ u型枕(价格偏高)|睡猫|家居日用|UP主推荐|拼多多|https://mobile.y
 
 围巾|义乌市茉漪梦服饰有限公司(虞城县全胜工艺品有限公司)|服饰内衣|UP主推荐|1688|https://qr.1688.com/s/Y1LcSMLG|||公司改做桌旗、旗帜。没有围巾
 
-沙棘汁|汾阳市富源饮料有限公司|即食代餐|UP主推荐|1688|https://qr.1688.com/s/j5JkjcU4|||网店注销
+沙棘汁|汾阳市富源饮料有限公司|即食代餐|UP主推荐|1688|https://qr.1688.com/s/j5JkjcU4|||店铺注销
 
 百合干|大师百合|即食代餐|UP主推荐|抖音||images/ep40/a.webp|55|
 
@@ -825,6 +825,164 @@ u型枕(价格偏高)|睡猫|家居日用|UP主推荐|拼多多|https://mobile.y
 过膝袜|诸暨市娜小袜针织厂|服饰内衣|粉丝推荐|1688|https://qr.1688.com/s/JovoBpAJ||10.3-24|
 
 滑雪服|南恩|服饰内衣|UP主推荐|淘宝|https://m.tb.cn/h.jjs5jCt0ZWzzwMN||52.2-2318|
+
+第五十一期|https://www.bilibili.com/video/BV1Ydv8BFEJr/
+
+秋裤(男士)|铜牛|服饰内衣|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=OYiepsia2i|images/ep51/a.webp|59|
+
+秋裤(女士)|铜牛|服饰内衣|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=OYiepsia2i|images/ep51/b.webp|55|
+
+双层纱家居服(薄)|义乌市晓岚服饰有限公司|服饰内衣|UP主推荐|1688|https://qr.1688.com/s/h4NGReYv||16-168|
+
+办公桌|泉州市天纵家具有限公司|办公家具|UP主推荐|1688|https://qr.1688.com/s/OStEsCK0||89-209.79|
+
+第五十二期|https://www.bilibili.com/video/BV1rYvUBZEFH/
+
+老式红薯|荔乡人家|烹饪食材|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=0IbRvEltAh|images/ep52/a.webp|21.9|推荐粉糯品种(中薯)，不宜放太久
+
+板栗饼|同栗家|休闲零食|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=zag9nmxGmG|images/ep52/b.webp|12.9|
+
+小型好物|智慧馆长1号|家居日用|UP主推荐官网下架|抖音||||
+
+奶枣巴旦木|好想你|休闲零食|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=suUQZYRMce|images/ep52/c.webp|9.8-39|包装升级
+
+姜汁软糖|雅太郎|休闲零食|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=y4EGqWIYdS|images/ep52/d.webp|11.7|
+
+第五十三期|https://www.bilibili.com/video/BV1uniiBGEvk/
+
+加厚垃圾袋(价格偏高)|恒澍|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=OHNBSi9dKF|images/ep53/a.webp|10.44|5.4丝
+
+厨余垃圾袋|恒澍|家居日用|UP主推荐官网下架|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=OHNBSi9dKF|images/ep53/b.webp|11.9|4.0丝
+
+加厚垃圾袋|雅蒂柔家|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=WHAkQqlKxB||3.8-13.04|
+
+加厚垃圾袋|固成|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=SoIyaSo9CP|images/ep53/c.webp|7.3|
+
+加厚水桶、脸盆|珠江(洛民)|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=SOGurxR8CI|images/ep53/d.webp|30.1|
+
+餐桌和椅子|壹森怡|家居日用|UP主推荐官网下架|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=AhWiQRW617||134-328|
+
+床上用的电脑小桌|赛鲸|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=chKS8qupGC||71.17-529.91|
+
+第五十四期|https://www.bilibili.com/video/BV1a5isB2Exr/
+
+便携折叠盆|FaSoLa|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=GJ1WEgxRAS|images/ep54/a.webp|7.9|
+
+ABS洞洞板|FaSoLa|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=GJ1WEgxRAS|images/ep54/b.webp|3.9|
+
+便携式漱口杯套装|FaSoLa|洗护用品|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=GJ1WEgxRAS|images/ep54/c.webp|9.9|
+
+小青柑泡茶壶|山海之道|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=izpAYNm8RT||8.9-19.9|
+
+玻璃水杯|glassshop|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=q4vlTGutgM|images/ep54/d.webp|9.4|
+
+高透收纳盒|跃初|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=0sFvoJ558F|images/ep54/e.webp|15.8|推荐购买大号
+
+衣服防尘罩|spring in travel(福发家居)|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=BOPwvonNwX||3.9-12.8|
+
+包包收纳袋|spring in travel(福发家居)|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=BOPwvonNwX|images/ep54/f.webp|11.8|
+
+坐姿矫正带|永康市聚艺轩工贸有限公司|个人护理|UP主推荐|1688|https://qr.1688.com/s/973O5oOp||17.5-199.99|
+
+第五十五期|https://www.bilibili.com/video/BV1H8iCBEEcg/
+
+护颈枕(价格优惠)|8H|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=RIwPPWpQJF|images/ep55/a.webp|79|
+
+垃圾袋|e洁|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=vnciPiP7zu|images/ep55/b.webp|8.76|第五十四期粉丝评论区
+
+防臭地漏(价格偏高)|潜水艇|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=aMYRYJM6WX||10-228|
+
+防臭地漏(价格适中)|FaSoLa|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=GJ1WEgxRAS|images/ep55/c.webp|8.42|
+
+防霾罩|缤斯|洗护用品|粉丝推荐|拼多多||images/ep55/d.webp|12.78|
+
+维达卷纸||洗护用品|UP主避雷|||||
+
+第五十六期|https://www.bilibili.com/video/BV1VkrKBVENL/
+
+全车罩|四季车衣用品|家居日用|粉丝推荐店铺下架|拼多多||||
+
+勃肯鞋||鞋类箱包|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=338NAVUiJS||107.1-299|
+
+电子秤|香山|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=3geuJ9UvoP||16.9-399|选体重秤
+
+玻璃碗|DURALEX|厨房用具|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=agbU6rJwTw|images/ep56/a.webp|35.63|
+
+男包|广州市雷樱皮具有限公司|鞋类箱包|UP主推荐|1688|https://qr.1688.com/s/mOXzxiWo|images/ep56/b.webp|158|
+
+第五十七期|https://www.bilibili.com/video/BV1yF6dBwEwj/
+
+围脖|迪卡侬|服饰内衣|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=OzcpYOa2pj|images/ep57/a.webp|29.9|
+
+暖贴|喜暖|家居日用|粉丝推荐|||images/ep57/b.webp||
+
+除尘掸|霜山|家居日用|UP主推荐官方下架|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=USsnUU29R1|images/ep57/c.webp||
+
+身体乳|润培|洗护用品|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=UVCsigVrKK|images/ep57/d.webp|45|
+
+润唇膏|青蛙王子|洗护用品|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=HcdXiAolXw|images/ep57/e.webp|7.82|
+
+第五十八期|https://www.bilibili.com/video/BV1MMrLBtEw3/
+
+平板支架|嘉华彩|3C数码|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=uB1B4qUKZQ|images/ep58/a.webp|34.9|选加厚、旋转款
+
+治痤疮和毛囊炎|克林霉素甲硝唑搽剂|个人护理|UP主推荐|拼多多||images/ep58/b.webp||
+
+沥水篮|浙江海港家居用品有限公司|厨房用具|粉丝推荐|1688|https://qr.1688.com/s/NK1kRWIO|||店铺注销
+
+暖宝宝|贝贝熊|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=gMiiUmxaEC|images/ep58/c.webp|3.78-121.8|
+
+收纳盒|稻草熊|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=U75LZlFJSq||5.55-59.9|
+
+第五十九期|https://www.bilibili.com/video/BV1DPkcBoEg6/
+
+擦窗玻璃|依来洁|家居日用|粉丝推荐官网下架|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=3zaByTNtSR||199-299|
+
+夹布拖把|思高|家居日用|家政粉丝推荐|拼多多||images/ep59/a.webp||x4款式
+
+拖把|佳帮手|家居日用|家政粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=LeeAUjp4Qf|images/ep59/b.webp|19.9|
+
+玫瑰花茶|玫澜|即食代餐|粉丝推荐|淘宝|https://m.tb.cn/h.jPlrdshxOGGueJf||47.4-182.74|
+
+贝壳梳子|MINISO|个人护理|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=v9jHYxhDJP|images/ep59/c.webp|16.9|
+
+按摩梳|MINISO|个人护理|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=v9jHYxhDJP|images/ep59/d.webp|16.9|
+
+第六十期|https://www.bilibili.com/video/BV1CFrDBSEH3/
+
+笔记本电脑支架|未来系|3C数码|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=2r2z2aDvsv||56.92-209|
+
+擦丝器(价格偏高)|龙江|厨房用具|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=vxGTcFnx2I|images/ep60/a.webp|39.9|
+
+刮鱼鳞机|愚公乐|厨房用具|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=8tLFoSifUq|images/ep60/b.webp|140|
+
+挡风被|娟子骑行护具店|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=Im9sw9PXKf||24.8-59.8|
+
+第六十一期|https://www.bilibili.com/video/BV1SpkuB2EE6/
+
+保鲜袋|锦博塑料包装|厨房用具|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=eXU6Q8TQ8h||6.2、10.8|
+
+金枪鱼罐头|大洋世家|休闲零食|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=AAZlgzyeI1||8.72-99.9|
+
+第六十二期|https://www.bilibili.com/video/BV17EzMBDEqo/
+
+衣架|衣生花|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=2o5loi07dJ|images/ep61/a.webp|9|
+
+食品密封袋|索晨|厨房用具|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=Ol66jrPugF||3.5-368.92|
+
+电热毯|lunaluno|家居日用|粉丝推荐|淘宝|https://m.tb.cn/h.jO4HogBCx5WBEVR||35.9-139.9| 
+
+猕猴桃|蜜蛋蛋水果生鲜|生鲜水果|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=rGa3lfYexf||19.79-19.9|
+
+
+
+
+
+
+
+
+
+
 
 
 
