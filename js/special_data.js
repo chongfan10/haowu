@@ -22,5 +22,8 @@ window.specialData = `
 
 槐角液|治理痔疮   加up微信：hizida  第五十四期|https://www.bilibili.com/video/BV1a5isB2Exr/|
 
+雨伞的筛选|全网直接搜索168骨雨伞(价格20左右)               第七十二期|https://www.bilibili.com/video/BV1P1fuBSEQe/|
+
+
 
 `;

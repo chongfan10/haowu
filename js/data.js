@@ -966,7 +966,7 @@ ABS洞洞板|FaSoLa|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo
 
 第六十二期|https://www.bilibili.com/video/BV17EzMBDEqo/
 
-衣架|衣生花|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=2o5loi07dJ|images/ep61/a.webp|9|
+衣架|衣生花|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=2o5loi07dJ|images/ep62/a.webp|9|
 
 食品密封袋|索晨|厨房用具|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=Ol66jrPugF||3.5-368.92|
 
@@ -974,10 +974,147 @@ ABS洞洞板|FaSoLa|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo
 
 猕猴桃|蜜蛋蛋水果生鲜|生鲜水果|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=rGa3lfYexf||19.79-19.9|
 
+第六十三期|https://www.bilibili.com/video/BV15UzaB7EaG/
 
+电脑升降工作台(价格适中)|乐歌|办公家具|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=UaZDLmT1Tj||279-7399|
 
+压缩袋|太力|家居日用|粉丝推荐|淘宝|https://m.tb.cn/h.jOIeq8J5dWsnETk||3.66-202.9|
 
+人工泪液|海露滴眼液|个人护理|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=BCW55E3jSO||69.3、277.3|
 
+梯子|奥鹏|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=sBTmkPFpgB||99-489|
+
+袜子|志祥袜业|服饰内衣|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=C6zZennzF3||8.9-12.9|
+
+耳塞|OHROPAXCOLOR|家居日用|粉丝推荐|淘宝|https://m.tb.cn/h.jlblPvegP40JOoA||17.8-31|
+
+冰箱收纳盒|禧天龙|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=ri6ZS0MDDZ||8.9-25.9|
+
+第六十四期|https://www.bilibili.com/video/BV1rQ6qBCE8D/
+
+坚果|心恩干果|休闲零食|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=KxGJIm2bip|images/ep64/a.webp|34.9|
+
+山东香酥咸煎饼|福盛轩食品工厂店|休闲零食|UP主推荐|抖音||images/ep64/b.webp|15.8|容易掉渣
+
+黄口烧饼|贞恋农场食品|休闲零食|粉丝推荐|淘宝||||店铺注销
+
+烤肉蘸料、烧烤料|微米惠|烹饪食材|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=0sHVKT3TV8||4.6-160|
+
+第六十五期|https://www.bilibili.com/video/BV1EzFNzwECd/
+
+吸盘猫吊床|TW宠物户外用品|宠物用品|粉丝推荐|拼多多||||店铺注销
+
+毛毡多层猫窝|Beidi贝迪毛毡制品|宠物用品|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=d1Xa5y0I7t||15-39|
+
+剑麻垫猫抓板|萌萌宠用品|宠物用品|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=T8DqdLlH8K|images/ep65/a.webp|32|产品升级
+
+猫玩具掏掏乐|宠小店用品|宠物用品|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=dQYPRHd6sp|images/ep65/b.webp|3.68|
+
+猫砂盆|甜馨百货馆|宠物用品|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=IpGNskqzLK|images/ep65/c.webp|32.83|
+
+猫砂|蜻蜓岛官方旗舰店|宠物用品|粉丝推荐官网下架|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=Elidt5Pqk7||10.8、13.2|
+
+第六十六期|https://www.bilibili.com/video/BV1y9foBUEFi/
+
+红糖(大块)|渝东生活馆|即食代餐|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=xyBx5kX5eY|images/ep66/a.webp|45|参考图片进行搜索
+
+菜刀|邓家刀|厨房用具|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=lNxvcqXbJ6||10-1380|
+
+油壶|太力|厨房用具|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=Je62GtbM0S|images/ep66/b.webp|13.75|
+
+衣服真空压缩袋|太力|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=Je62GtbM0S|images/ep66/c.webp|49.65|
+
+鱼鳞抹布|左邻右里居家日用旗舰店|家居日用|粉丝推荐|淘宝|https://m.tb.cn/h.j9qiRGtid3b26jB|images/ep66/d.webp|17.11|
+
+洗衣液、洗洁精|家安|洗护用品|粉丝推荐|淘宝|https://m.tb.cn/h.jl4A079CpnO9eWT||17.3-196.3|
+
+第六十七期|https://www.bilibili.com/video/BV1q9FpzyEKg/
+
+香料小店|秋香姑娘优选|烹饪食材|粉丝推荐|淘宝|https://m.tb.cn/h.jkuVeDzKb7UsdlF||8.73-36.3|
+
+不粘油的 竹纤维抹布|妙洁|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=T3UHDEawn1|images/ep67/a.webp|11.9|
+
+厚实菜刀|卢大锤旗舰店|厨房用具|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=y8RLxShNeh||38-138|
+
+海绵床垫|千厂万店|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=QL8cjHbbpM|images/ep67/b.webp|10.02|定制
+
+第六十八期|https://www.bilibili.com/video/BV1urFQzjEsb/
+
+牙膏(价格实惠)|白玉|洗护用品|粉丝推荐官网下架|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=u71ohocyCm|images/ep68/a.webp|4.9-100|
+
+牙刷(毛密)|狮王|洗护用品|粉丝推荐官网下架|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=nCBPA8hhQK|images/ep68/b.webp|12.89-199|
+
+重油污的清洗剂、管道疏通剂|Mootaa|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=ZfssinZj7s|images/ep68/c.webp|33.9|
+
+管道疏通剂|蓝多霸|家居日用|UP主推荐|||images/ep68/d.webp||
+
+台灯|米家台灯1s增强版|照明灯具|UP主推荐官网下架|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=bX4bo83Q7B|images/ep68/e.webp||
+
+纳米死皮搓||洗护用品|UP主推荐|拼多多||images/ep68/f.webp||
+
+第六十九期|https://www.bilibili.com/video/BV14bcizAEAs/
+
+巧克力|法布朗|休闲零食|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=plAmuCyhaI||14.49-139|
+
+酸杏干|龙混山|休闲零食|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=nnmEuwsniw||14.9-95.8|
+
+大列巴|三家巷|休闲零食|粉丝推荐|拼多多||||店铺注销
+
+菜刀|爱仕达|厨房用具|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=AJBo2Pcbpz||15.11-599|
+
+炉果(零食)|沈飞食品|休闲零食|UP主推荐|淘宝|https://m.tb.cn/h.jOye0n7SqqgMWNS|images/ep69/a.webp|35|拿手品
+
+抽真空机(价格偏高)|Ezeeseal|厨房用具|UP主推荐||https://mobile.yangkeduo.com/goods1.html?ps=ljSyRIAY1C|images/ep12/b1.webp|388|无旗舰店，第12期提及
+
+第七十期|https://www.bilibili.com/video/BV1stZLBaEP6/
+
+手机钢化膜|闪魔|3C数码|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=CvUgLNAgrb||8.1-199|
+
+防晒雨伞夹|知轻伞哥(知轻徒步伞)|家居日用|UP主推荐|抖音||images/ep70/a.webp|23.9|
+
+紫薯|小时候的紫薯(尖尖爸爸)的店|烹饪食材|UP主推荐|小红书||||
+
+可湿水挂式纸巾|Hot红辣椒折扣店|洗护用品|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=ehE6HYzfmO|images/ep70/b.webp|32|
+
+保湿|丝塔芙|洗护用品|UP主推荐|淘宝|https://m.tb.cn/h.jkv0suao6NPOOvq|images/ep70/c.webp|79-418|
+
+防晒|蓝胖子|洗护用品|UP主推荐|淘宝|https://m.tb.cn/h.jlUCGqangQiCqBm|images/ep70/d.webp|7.67-740|
+
+暖被机|爱丽丝|家居日用|UP主推荐|淘宝|https://m.tb.cn/h.jOyq1w3GXJ7lWI2|images/ep70/e.webp|316.34|
+
+第七十一期|https://www.bilibili.com/video/BV1wwZkBNEKJ/
+
+花生米|东昌名吃步老秘花生米|休闲零食|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=vFrJadf8kx|images/ep71/a.webp|5.91|
+
+花生米|兴盛德麻辣花生|休闲零食|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=ySo3KfmrdN||9.9-89|推荐麻辣味
+
+瓜子|日诏|休闲零食|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=X78KqDXsYM||14.99-95.45|
+
+酸杏干|燕云良品|休闲零食|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=HGyjSXHbtZ|images/ep71/b.webp|16.12-68.89|产品升级
+
+酸奶|天润|即食代餐|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=hCrePobG52|images/ep71/c.webp|30|
+
+第七十二期|https://www.bilibili.com/video/BV1P1fuBSEQe/
+
+挖野菜的铲子|锰钢一体|家居日用|UP主推荐|||images/ep72/a.webp||参考图片
+
+挖野菜的铲子|不锈钢，塑料柄|家居日用|UP主推荐|||images/ep72/b.webp||买品牌产品
+
+穿衣镜|伯仑|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=XjZDs5F5nu||97-989|
+
+穿衣镜|新艺鸿运|家居日用|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=3iaJPVT4rk||13.8-199.9|
+
+牛津布车衣车罩|万胜汽车用品|家居日用|UP主推荐|拼多多||||店铺注销
+
+第七十三期|https://www.bilibili.com/video/BV1RafwBLEeS/
+
+厨房漂白剂|火箭厨房漂白剂|洗护用品|粉丝推荐|拼多多||images/ep73/a.webp|(具有碱性溶液，请慎重考虑）|图片搜索
+
+鞋刷组合|美丽雅|洗护用品|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=mUfZZK5vUb|images/ep73/b.webp|5.9|
+
+肥皂|炉甘石皂|洗护用品|UP主推荐|拼多多||images/ep73/c.webp||止痒，产品升级
+
+烧水壶|美的养生壶MK-YS18P506D|厨房用具|UP主推荐官方下架|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=PIxrRyTRlO|images/ep73/d.webp||
 
 
 
