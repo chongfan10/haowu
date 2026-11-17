@@ -6,9 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMainTab = 'main'; 
     let currentMode = 'episode', currentEpisode = 'all', currentCategory = 'all', searchKeyword = '';
     
-    // 🌟 新增：分页状态变量
     let currentPage = 1;
-    const itemsPerPage = 24; // 每页显示的数量
+    const itemsPerPage = 24;
 
     const mainTabs = document.getElementById('mainTabs');
     const fixedNavArea = document.getElementById('fixedNavArea');
@@ -64,36 +63,45 @@ document.addEventListener('DOMContentLoaded', () => {
         mainNav.innerHTML = html;
     }
 
-    // 🌟 核心修改：添加了分页切片逻辑
     function renderCards() {
         let allMatchedItems = [];
         let activeVideoLink = '';
 
-        database.forEach(ep => {
+        const searchSource = searchKeyword !== '' ? [...database].reverse() : database;
+
+        searchSource.forEach(ep => {
             const isMain = isMainEpisode(ep.episode);
+            
             if (searchKeyword === '') {
                 if (currentMainTab === 'main' && !isMain) return;
                 if (currentMainTab === 'special' && isMain) return;
+                if (currentEpisode !== 'all' && ep.episode !== currentEpisode) return;
             }
 
-            if (currentEpisode === 'all' || ep.episode === currentEpisode) {
-                if (currentEpisode !== 'all') activeVideoLink = ep.videoLink;
-                ep.items.forEach(item => {
-                    const matchCat = (currentCategory === 'all' || item.category === currentCategory);
-                    const matchSearch = searchKeyword === '' || [item.name, item.brand, item.comment].some(str => str.toLowerCase().includes(searchKeyword.toLowerCase()));
-                    if (matchCat && matchSearch) allMatchedItems.push({ ...item, episodeTag: ep.episode });
-                });
-            }
+            ep.items.forEach(item => {
+                const matchCat = (searchKeyword !== '' || currentCategory === 'all' || item.category === currentCategory);
+                
+                // 🌟 核心修改：使用智能模糊搜索
+                const matchSearch = searchKeyword === '' || 
+                    window.fuzzyMatch(item.name, searchKeyword) || 
+                    window.fuzzyMatch(item.brand, searchKeyword) || 
+                    window.fuzzyMatch(item.comment, searchKeyword);
+                
+                if (matchCat && matchSearch) {
+                    allMatchedItems.push({ ...item, episodeTag: ep.episode });
+                }
+            });
         });
 
-        // 更新顶部传送门
-        if (currentEpisode === 'all') {
+        if (currentEpisode === 'all' || searchKeyword !== '') {
             if (currentMainTab === 'main' || searchKeyword !== '') {
                 videoLinkArea.innerHTML = `视频传送门：B站博主 <a href="https://space.bilibili.com/14127001" target="_blank">${window.icons.bili} 逛拼多多的品检员</a> 《好物整理合集》`;
             } else {
                 videoLinkArea.innerHTML = `推荐列表：<span style="font-weight:bold; color:var(--accent-color);">特别补充</span> （UP主单独列出）`;
             }
         } else {
+            const targetEp = database.find(ep => ep.episode === currentEpisode);
+            activeVideoLink = targetEp ? targetEp.videoLink : '';
             if (activeVideoLink) {
                 videoLinkArea.innerHTML = `视频传送门：<a href="${activeVideoLink}" target="_blank">${window.icons.bili} <span>${currentEpisode} 视频传送门</span></a>`;
             } else {
@@ -107,17 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 🌟 分页计算逻辑
         const totalPages = Math.ceil(allMatchedItems.length / itemsPerPage);
-        // 防止页码越界
         if (currentPage > totalPages) currentPage = totalPages;
         if (currentPage < 1) currentPage = 1;
         
-        // 截取当前页的数据
         const startIndex = (currentPage - 1) * itemsPerPage;
         const itemsToRender = allMatchedItems.slice(startIndex, startIndex + itemsPerPage);
 
-        // 渲染卡片...
         if (currentMainTab === 'special' && searchKeyword === '') {
             let listHtml = `<div class="special-list-wrapper">`;
             itemsToRender.forEach(item => {
@@ -128,13 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (item.url) btnGroupHtml += `<a href="${item.url}" target="_blank" rel="noopener noreferrer" class="special-link-btn">${window.icons.link} 前往购买</a>`;
                 if (!item.videoUrl && !item.url) btnGroupHtml += `<span class="special-no-link">暂无相关链接</span>`;
                 btnGroupHtml += `</div>`;
-
-                listHtml += `
-                    <div class="special-item">
-                        <div class="special-item-info"><div class="special-title">${highlightedName}${brandHtml}</div></div>
-                        ${btnGroupHtml}
-                    </div>
-                `;
+                listHtml += `<div class="special-item"><div class="special-item-info"><div class="special-title">${highlightedName}${brandHtml}</div></div>${btnGroupHtml}</div>`;
             });
             listHtml += `</div>`;
             cardGrid.innerHTML = listHtml;
@@ -148,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ? `<img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="img-placeholder" style="display:none;">${window.icons.camera} <span>无具体推荐物品</span></div>`
                     : `<div class="img-placeholder" style="display:flex;">${window.icons.camera} <span>无具体推荐物品</span></div>`;
                 
-                const episodeTagHTML = (currentEpisode === 'all') 
+                const episodeTagHTML = (currentEpisode === 'all' || searchKeyword !== '') 
                     ? `<button class="tag episode btn-episode" data-episode="${item.episodeTag}" title="点击切换至 ${item.episodeTag}">${item.episodeTag}</button>` 
                     : '';
                 
@@ -187,11 +185,9 @@ document.addEventListener('DOMContentLoaded', () => {
             cardGrid.innerHTML = htmlArray.join('');
         }
 
-        // 🌟 渲染底部分页器
         renderPagination(totalPages);
     }
 
-    // 🌟 动态生成分页按钮
     function renderPagination(totalPages) {
         if (totalPages <= 1) {
             paginationContainer.innerHTML = '';
@@ -199,11 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let html = '';
-        
-        // 上一页按钮
         html += `<button class="page-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>上一页</button>`;
 
-        // 页码计算（最多显示 5 个页码，多余用省略号）
         let startPage = Math.max(1, currentPage - 2);
         let endPage = Math.min(totalPages, currentPage + 2);
 
@@ -221,15 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
             html += `<button class="page-btn" data-page="${totalPages}">${totalPages}</button>`;
         }
 
-        // 下一页按钮
         html += `<button class="page-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''}>下一页</button>`;
 
         paginationContainer.innerHTML = html;
     }
 
-    // ==========================================
-    // 事件绑定
-    // ==========================================
     mainTabs.addEventListener('click', (e) => {
         const btn = e.target.closest('button');
         if (!btn || btn.classList.contains('active')) return;
@@ -238,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentEpisode = 'all'; 
         currentCategory = 'all'; 
         searchKeyword = '';
-        currentPage = 1; // 重置页码
+        currentPage = 1;
         searchInput.value = ''; 
         clearSearchBtn.classList.remove('show');
         renderTopTabs(); renderNav(); renderCards();
@@ -250,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentMode = currentMode === 'episode' ? 'category' : 'episode';
             currentEpisode = 'all';
             currentCategory = 'all';
-            currentPage = 1; // 重置页码
+            currentPage = 1;
             renderNav();
             mainNav.scrollTo({ left: 0, behavior: 'smooth' });
         }
@@ -268,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentCategory = val;
             currentEpisode = 'all'; 
         }
-        currentPage = 1; // 重置页码
+        currentPage = 1;
         renderNav(); renderCards();
     });
 
@@ -287,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentEpisode = targetEp;
             currentCategory = 'all';
             searchKeyword = '';
-            currentPage = 1; // 重置页码
+            currentPage = 1;
             searchInput.value = '';
             clearSearchBtn.classList.remove('show');
 
@@ -312,17 +301,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 🌟 分页器点击事件
     paginationContainer.addEventListener('click', (e) => {
         const btn = e.target.closest('.page-btn');
         if (!btn || btn.disabled || btn.classList.contains('active')) return;
-        
         const targetPage = parseInt(btn.getAttribute('data-page'));
         if (!isNaN(targetPage)) {
             currentPage = targetPage;
             renderCards();
-            
-            // 平滑滚动到顶部
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     });
@@ -334,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(searchTimer);
         searchTimer = setTimeout(() => { 
             searchKeyword = val; 
-            currentPage = 1; // 重置页码
+            currentPage = 1;
             renderCards(); 
         }, 300);
     });
@@ -343,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.value = ''; 
         clearSearchBtn.classList.remove('show'); 
         searchKeyword = ''; 
-        currentPage = 1; // 重置页码
+        currentPage = 1;
         renderCards(); 
         searchInput.focus();
     });

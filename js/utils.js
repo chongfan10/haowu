@@ -53,7 +53,6 @@ window.parseSpecialData = function(rawText) {
     return database;
 };
 
-// 🌟 核心修改：如果没有平台，返回空字符串，不再返回“推荐官方旗舰店购买”
 window.getPlatformText = function(platform) {
     const emptyPlatforms = ['未提及', '未提及平台', '无', ''];
     return emptyPlatforms.includes(platform) ? '' : platform;
@@ -68,4 +67,27 @@ window.highlightText = function(text, keyword) {
     const safeKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${safeKeyword})`, 'gi');
     return text.replace(regex, '<span class="highlight">$1</span>');
+};
+
+// 🌟 核心新增：智能中文模糊搜索
+window.fuzzyMatch = function(text, keyword) {
+    if (!keyword) return true;
+    if (!text) return false;
+    const t = text.toLowerCase();
+    const k = keyword.toLowerCase();
+    
+    // 1. 完全包含（比如搜“鞋子”，如果文本里真有“鞋子”，直接命中）
+    if (t.includes(k)) return true;
+    
+    // 2. 去除常见中文后缀/单位后再匹配（比如“鞋子”变“鞋”，“运动装”变“运动”）
+    const cleanK = k.replace(/[的地得子装款件套个只把条张块们些类机具]+$/g, '').trim();
+    if (cleanK && t.includes(cleanK)) return true;
+    
+    // 3. 支持多词拆分布局（比如搜“鞋 白色”，只要都包含就行）
+    if (k.includes(' ')) {
+        const parts = k.split(/\s+/).filter(Boolean);
+        if (parts.length > 1 && parts.every(part => t.includes(part))) return true;
+    }
+
+    return false;
 };
