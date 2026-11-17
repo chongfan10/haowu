@@ -1210,7 +1210,7 @@ ABS洞洞板|FaSoLa|家居日用|粉丝推荐|拼多多|https://mobile.yangkeduo
 
 喷雾(口腔溃疡)|金喉健|个人护理|粉丝推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=7VVWNN3vZT|images/ep79/h.webp|30-43.7|
 
-小蜜蜂|爱课mr2500|办公家具|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=XRz6jEAieU|images/ep79/i.webp|220|
+小蜜蜂(扩音器)|爱课mr2500|办公家具|UP主推荐|拼多多|https://mobile.yangkeduo.com/mall_page.html?ps=XRz6jEAieU|images/ep79/i.webp|220|
 
 第八十期|https://www.bilibili.com/video/BV1tcwTzXEN3/
 
