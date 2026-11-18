@@ -18,33 +18,38 @@
             <div class="title-area">
                 <h1>UP好物推荐合集</h1>
                 <div class="video-link-area" id="videoLinkArea">
-                    <!-- 加载提示 -->
                     <span style="opacity: 0.5;">正在加载传送门...</span>
                 </div>
             </div>
             
-            <div class="search-area">
-                <button class="disclaimer-btn" id="openDisclaimerBtn">
-                    <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                    免责声明
-                </button>
+            <!-- 右侧包裹容器 -->
+            <div class="header-right">
+                <!-- 平台统计栏 -->
+                <div id="platformStats" class="platform-stats"></div>
+                
+                <div class="search-area">
+                    <button class="disclaimer-btn" id="openDisclaimerBtn">
+                        <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                        免责声明
+                    </button>
 
-                <div class="search-input-wrapper">
-                    <input type="text" id="searchInput" placeholder="搜索好物名称或品牌...">
-                    <button id="clearSearchBtn" class="clear-btn" title="清空">
-                        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                    <div class="search-input-wrapper">
+                        <input type="text" id="searchInput" placeholder="搜索好物或品牌...">
+                        <button id="clearSearchBtn" class="clear-btn" title="清空">
+                            <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                        </button>
+                    </div>
+                    <button class="search-btn">
+                        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
                     </button>
                 </div>
-                <button class="search-btn">
-                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                </button>
             </div>
         </header>
 
         <!-- 顶层分类切换 -->
         <div id="mainTabs" class="main-tabs"></div>
 
-        <!-- 导航栏重构：左侧固定，右侧滚动 -->
+        <!-- 导航栏 -->
         <div class="nav-wrapper">
             <div id="fixedNavArea" class="fixed-nav-area"></div>
             <div class="nav-scroll-wrapper">
@@ -57,7 +62,7 @@
             <div class="empty-state">正在加载好物数据...</div>
         </main>
 
-        <!-- 🌟 新增：分页容器 -->
+        <!-- 分页容器 -->
         <div id="pagination" class="pagination"></div>
     </div>
 

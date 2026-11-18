@@ -17,8 +17,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearchBtn');
     const paginationContainer = document.getElementById('pagination');
+    const platformStats = document.getElementById('platformStats');
 
     const isMainEpisode = (episodeName) => episodeName.includes('期');
+
+    // 🌟 渲染带图标的平台统计
+    function renderPlatformStats() {
+        // 请确保 images/icons/ 下有这些图片，且扩展名（如 .png）与实际一致
+        const iconMap = {
+            '拼多多': 'images/icons/pinduoduo.png',
+            '淘宝/天猫': 'images/icons/taobao.png',
+            '1688': 'images/icons/1688.png',
+            '抖音': 'images/icons/douyin.png',
+            '小红书': 'images/icons/xiaohongshu.png'
+        };
+
+        const counts = {};
+        database.forEach(ep => {
+            ep.items.forEach(item => {
+                let p = item.platform;
+                if (!p || p === '无' || p === '未提及' || p === '未提及平台') return;
+                
+                // 智能归类
+                if (p.includes('拼多多') || p.includes('PDD')) p = '拼多多';
+                else if (p.includes('淘宝') || p.includes('天猫')) p = '淘宝/天猫';
+                else if (p.includes('1688') || p.includes('阿里巴巴')) p = '1688';
+                else if (p.includes('抖音')) p = '抖音';
+                else if (p.includes('小红书')) p = '小红书';
+                else return; 
+
+                counts[p] = (counts[p] || 0) + 1;
+            });
+        });
+
+        // 按数量降序排列
+        const sorted = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+        
+        let html = '';
+        sorted.forEach(p => {
+            // 如果映射表里有这个平台的图标，才显示
+            if (iconMap[p]) {
+                html += `
+                    <div class="stat-item" title="${p}：${counts[p]}个">
+                        <img src="${iconMap[p]}" alt="${p}" onerror="this.style.display='none'; this.nextElementSibling.style.display='none';">
+                        <span class="stat-num">${counts[p]}</span>
+                    </div>
+                `;
+            }
+        });
+        
+        platformStats.innerHTML = html;
+    }
 
     function renderTopTabs() {
         mainTabs.innerHTML = `
@@ -80,8 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             ep.items.forEach(item => {
                 const matchCat = (searchKeyword !== '' || currentCategory === 'all' || item.category === currentCategory);
-                
-                // 🌟 核心修改：使用智能模糊搜索
                 const matchSearch = searchKeyword === '' || 
                     window.fuzzyMatch(item.name, searchKeyword) || 
                     window.fuzzyMatch(item.brand, searchKeyword) || 
@@ -366,6 +413,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('confirmModalBtn').addEventListener('click', () => { closeModal(); localStorage.setItem('hasReadDisclaimer', 'true'); });
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
+    // 启动时初始化统计
+    renderPlatformStats();
     renderTopTabs();
     renderFixedBtn();
     renderNav();
