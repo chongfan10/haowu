@@ -1,14 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ==========================================
+    // 1. 初始化与数据缓存 (性能优化)
+    // ==========================================
     const mainData = window.parseGoodsData(window.goodsData || '');
     const specialData = window.parseSpecialData(window.specialData || '');
     const database = [...mainData, ...specialData];
     
+    // 缓存全局统计数据，避免每次点击都重新遍历计算
+    const globalStats = {
+        categories: new Set(),
+        platforms: {},
+        recs: { 'UP主推荐': 0, '粉丝推荐': 0, '粉丝自产': 0 }
+    };
+
+    database.forEach(ep => {
+        ep.items.forEach(item => {
+            // 分类统计
+            if (item.category) globalStats.categories.add(item.category);
+            
+            // 推荐人统计 (转小写，修复原代码大小写不匹配导致统计为0的问题)
+            const recStr = (item.rec || '').toLowerCase();
+            if (recStr.includes('up') || recStr.includes('推荐')) globalStats.recs['UP主推荐']++;
+            else if (recStr.includes('自产')) globalStats.recs['粉丝自产']++;
+            else if (recStr.includes('粉丝')) globalStats.recs['粉丝推荐']++;
+
+            // 平台统计
+            let p = item.platform;
+            if (p && !['无', '未提及', '未提及平台'].includes(p)) {
+                if (p.includes('拼多多') || p.includes('PDD')) p = '拼多多';
+                else if (p.includes('淘宝') || p.includes('天猫')) p = '淘宝/天猫';
+                else if (p.includes('1688') || p.includes('阿里巴巴')) p = '1688';
+                else if (p.includes('抖音')) p = '抖音';
+                else if (p.includes('小红书')) p = '小红书';
+                else return;
+                globalStats.platforms[p] = (globalStats.platforms[p] || 0) + 1;
+            }
+        });
+    });
+
+    const allCategories = [...globalStats.categories].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+
+    // 状态变量
     let currentMainTab = 'main'; 
     let currentMode = 'episode', currentEpisode = 'all', currentCategory = 'all', searchKeyword = '';
-    
     let currentPage = 1;
     const itemsPerPage = 24;
 
+    // DOM 元素
     const mainTabs = document.getElementById('mainTabs');
     const fixedNavArea = document.getElementById('fixedNavArea');
     const mainNav = document.getElementById('mainNav');
@@ -18,12 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearSearchBtn = document.getElementById('clearSearchBtn');
     const paginationContainer = document.getElementById('pagination');
     const platformStats = document.getElementById('platformStats');
+    const recStats = document.getElementById('recStats');
 
     const isMainEpisode = (episodeName) => episodeName.includes('期');
 
-    // 🌟 渲染带图标的平台统计
+    // ==========================================
+    // 2. 渲染统计栏
+    // ==========================================
     function renderPlatformStats() {
-        // 请确保 images/icons/ 下有这些图片，且扩展名（如 .png）与实际一致
         const iconMap = {
             '拼多多': 'images/icons/pinduoduo.png',
             '淘宝/天猫': 'images/icons/taobao.png',
@@ -31,42 +71,22 @@ document.addEventListener('DOMContentLoaded', () => {
             '抖音': 'images/icons/douyin.png',
             '小红书': 'images/icons/xiaohongshu.png'
         };
-
-        const counts = {};
-        database.forEach(ep => {
-            ep.items.forEach(item => {
-                let p = item.platform;
-                if (!p || p === '无' || p === '未提及' || p === '未提及平台') return;
-                
-                // 智能归类
-                if (p.includes('拼多多') || p.includes('PDD')) p = '拼多多';
-                else if (p.includes('淘宝') || p.includes('天猫')) p = '淘宝/天猫';
-                else if (p.includes('1688') || p.includes('阿里巴巴')) p = '1688';
-                else if (p.includes('抖音')) p = '抖音';
-                else if (p.includes('小红书')) p = '小红书';
-                else return; 
-
-                counts[p] = (counts[p] || 0) + 1;
-            });
-        });
-
-        // 按数量降序排列
-        const sorted = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
-        
+        const sorted = Object.keys(globalStats.platforms).sort((a, b) => globalStats.platforms[b] - globalStats.platforms[a]);
         let html = '';
         sorted.forEach(p => {
-            // 如果映射表里有这个平台的图标，才显示
             if (iconMap[p]) {
-                html += `
-                    <div class="stat-item" title="${p}：${counts[p]}个">
-                        <img src="${iconMap[p]}" alt="${p}" onerror="this.style.display='none'; this.nextElementSibling.style.display='none';">
-                        <span class="stat-num">${counts[p]}</span>
-                    </div>
-                `;
+                html += `<div class="stat-item" title="${p}：${globalStats.platforms[p]}个"><img src="${iconMap[p]}" alt="${p}" onerror="this.style.display='none'; this.nextElementSibling.style.display='none';"><span class="stat-num">${globalStats.platforms[p]}</span></div>`;
             }
         });
-        
         platformStats.innerHTML = html;
+    }
+
+    function renderRecStats() {
+        let html = '';
+        if (globalStats.recs['UP主推荐'] > 0) html += `<div class="rec-badge">UP主推荐 <b>${globalStats.recs['UP主推荐']}</b></div>`;
+        if (globalStats.recs['粉丝推荐'] > 0) html += `<div class="rec-badge">粉丝推荐 <b>${globalStats.recs['粉丝推荐']}</b></div>`;
+        if (globalStats.recs['粉丝自产'] > 0) html += `<div class="rec-badge">粉丝自产 <b>${globalStats.recs['粉丝自产']}</b></div>`;
+        recStats.innerHTML = html;
     }
 
     function renderTopTabs() {
@@ -87,53 +107,54 @@ document.addEventListener('DOMContentLoaded', () => {
         fixedNavArea.innerHTML = `<button class="btn-base" id="toggleModeBtn" title="切换模式">${window.icons.arrow}</button>`;
     }
 
+    // ==========================================
+    // 3. 渲染导航栏
+    // ==========================================
     function renderNav() {
         const tabEpisodes = getTabEpisodes();
         const tabItems = tabEpisodes.flatMap(ep => ep.items);
-        const tabCategories = [...new Set(tabItems.map(item => item.category))].filter(Boolean).sort((a, b) => a.localeCompare(b, 'zh-CN'));
-
         let html = '';
         
         if (currentMode === 'episode') {
             const totalCount = tabEpisodes.reduce((s, e) => s + e.items.length, 0);
             html += `<button class="btn-base ${currentEpisode === 'all' ? 'active' : ''}" data-val="all">全部 (${totalCount})</button>`;
-            
             [...tabEpisodes].reverse().forEach(ep => {
                 html += `<button class="btn-base ${currentEpisode === ep.episode ? 'active' : ''}" data-val="${ep.episode}">${ep.episode} (${ep.items.length})</button>`;
             });
         } else {
             const itemsToCount = currentEpisode === 'all' ? tabItems : (tabEpisodes.find(ep => ep.episode === currentEpisode)?.items || []);
             html += `<button class="btn-base ${currentCategory === 'all' ? 'active' : ''}" data-val="all">全部分类 (${itemsToCount.length})</button>`;
-            tabCategories.forEach(cat => {
+            allCategories.forEach(cat => {
                 const count = itemsToCount.filter(i => i.category === cat).length;
-                html += `<button class="btn-base ${currentCategory === cat ? 'active' : ''}" data-val="${cat}">${cat} (${count})</button>`;
+                if (count > 0) {
+                    html += `<button class="btn-base ${currentCategory === cat ? 'active' : ''}" data-val="${cat}">${cat} (${count})</button>`;
+                }
             });
         }
         mainNav.innerHTML = html;
     }
 
+    // ==========================================
+    // 4. 渲染卡片
+    // ==========================================
     function renderCards() {
         let allMatchedItems = [];
         let activeVideoLink = '';
-
         const searchSource = searchKeyword !== '' ? [...database].reverse() : database;
 
         searchSource.forEach(ep => {
             const isMain = isMainEpisode(ep.episode);
-            
             if (searchKeyword === '') {
                 if (currentMainTab === 'main' && !isMain) return;
                 if (currentMainTab === 'special' && isMain) return;
                 if (currentEpisode !== 'all' && ep.episode !== currentEpisode) return;
             }
-
             ep.items.forEach(item => {
                 const matchCat = (searchKeyword !== '' || currentCategory === 'all' || item.category === currentCategory);
                 const matchSearch = searchKeyword === '' || 
                     window.fuzzyMatch(item.name, searchKeyword) || 
                     window.fuzzyMatch(item.brand, searchKeyword) || 
                     window.fuzzyMatch(item.comment, searchKeyword);
-                
                 if (matchCat && matchSearch) {
                     allMatchedItems.push({ ...item, episodeTag: ep.episode });
                 }
@@ -190,9 +211,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     : `<span class="card-link disabled">暂无链接</span>`;
 
                 const imageHTML = item.image
-                    ? `<img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="img-placeholder" style="display:none;">${window.icons.camera} <span>无具体推荐物品</span></div>`
+                    ? `<img src="${item.image}" alt="${item.name}" loading="lazy" class="preview-trigger" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="img-placeholder" style="display:none;">${window.icons.camera} <span>无具体推荐物品</span></div>`
                     : `<div class="img-placeholder" style="display:flex;">${window.icons.camera} <span>无具体推荐物品</span></div>`;
                 
+                const is1688 = item.platform && item.platform.includes('1688');
+                const sourceBadgeHTML = is1688 ? `<div class="source-badge">源头厂家</div>` : '';
+
                 const episodeTagHTML = (currentEpisode === 'all' || searchKeyword !== '') 
                     ? `<button class="tag episode btn-episode" data-episode="${item.episodeTag}" title="点击切换至 ${item.episodeTag}">${item.episodeTag}</button>` 
                     : '';
@@ -208,7 +232,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 return `
                     <div class="card">
-                        <div class="card-image-wrapper">${imageHTML}</div>
+                        <div class="card-image-wrapper">
+                            ${sourceBadgeHTML}
+                            ${imageHTML}
+                        </div>
                         <div class="card-content">
                             <div class="card-tags">
                                 <span class="tag category">${item.category}</span>
@@ -231,16 +258,17 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             cardGrid.innerHTML = htmlArray.join('');
         }
-
         renderPagination(totalPages);
     }
 
+    // ==========================================
+    // 5. 分页渲染
+    // ==========================================
     function renderPagination(totalPages) {
         if (totalPages <= 1) {
             paginationContainer.innerHTML = '';
             return;
         }
-
         let html = '';
         html += `<button class="page-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>上一页</button>`;
 
@@ -251,32 +279,26 @@ document.addEventListener('DOMContentLoaded', () => {
             html += `<button class="page-btn" data-page="1">1</button>`;
             if (startPage > 2) html += `<span class="page-ellipsis">...</span>`;
         }
-
         for (let i = startPage; i <= endPage; i++) {
             html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
         }
-
         if (endPage < totalPages) {
             if (endPage < totalPages - 1) html += `<span class="page-ellipsis">...</span>`;
             html += `<button class="page-btn" data-page="${totalPages}">${totalPages}</button>`;
         }
-
         html += `<button class="page-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''}>下一页</button>`;
-
         paginationContainer.innerHTML = html;
     }
 
+    // ==========================================
+    // 6. 事件监听
+    // ==========================================
     mainTabs.addEventListener('click', (e) => {
         const btn = e.target.closest('button');
         if (!btn || btn.classList.contains('active')) return;
         currentMainTab = btn.getAttribute('data-tab');
-        currentMode = 'episode'; 
-        currentEpisode = 'all'; 
-        currentCategory = 'all'; 
-        searchKeyword = '';
-        currentPage = 1;
-        searchInput.value = ''; 
-        clearSearchBtn.classList.remove('show');
+        currentMode = 'episode'; currentEpisode = 'all'; currentCategory = 'all'; searchKeyword = '';
+        currentPage = 1; searchInput.value = ''; clearSearchBtn.classList.remove('show');
         renderTopTabs(); renderNav(); renderCards();
     });
 
@@ -284,52 +306,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = e.target.closest('button');
         if (btn && btn.id === 'toggleModeBtn') {
             currentMode = currentMode === 'episode' ? 'category' : 'episode';
-            currentEpisode = 'all';
-            currentCategory = 'all';
-            currentPage = 1;
-            renderNav();
-            mainNav.scrollTo({ left: 0, behavior: 'smooth' });
+            currentEpisode = 'all'; currentCategory = 'all'; currentPage = 1;
+            renderNav(); mainNav.scrollTo({ left: 0, behavior: 'smooth' });
         }
     });
 
     mainNav.addEventListener('click', (e) => {
         const btn = e.target.closest('button');
         if (!btn || !btn.hasAttribute('data-val')) return;
-        
         const val = btn.getAttribute('data-val');
-        if (currentMode === 'episode') {
-            currentEpisode = val;
-            currentCategory = 'all'; 
-        } else {
-            currentCategory = val;
-            currentEpisode = 'all'; 
-        }
-        currentPage = 1;
-        renderNav(); renderCards();
+        if (currentMode === 'episode') { currentEpisode = val; currentCategory = 'all'; } 
+        else { currentCategory = val; currentEpisode = 'all'; }
+        currentPage = 1; renderNav(); renderCards();
     });
 
     cardGrid.addEventListener('click', (e) => {
         const btnEp = e.target.closest('.btn-episode');
         if (btnEp) {
             const targetEp = btnEp.getAttribute('data-episode');
-            if (currentMainTab !== 'main') {
-                currentMainTab = 'main';
-                renderTopTabs();
-            }
-            if (currentMode !== 'episode') {
-                currentMode = 'episode';
-            }
-
-            currentEpisode = targetEp;
-            currentCategory = 'all';
-            searchKeyword = '';
-            currentPage = 1;
-            searchInput.value = '';
-            clearSearchBtn.classList.remove('show');
-
-            renderNav();
-            renderCards();
-
+            if (currentMainTab !== 'main') { currentMainTab = 'main'; renderTopTabs(); }
+            if (currentMode !== 'episode') { currentMode = 'episode'; }
+            currentEpisode = targetEp; currentCategory = 'all'; searchKeyword = '';
+            currentPage = 1; searchInput.value = ''; clearSearchBtn.classList.remove('show');
+            renderNav(); renderCards();
             setTimeout(() => {
                 const activeNavBtn = mainNav.querySelector('.active');
                 if (activeNavBtn) {
@@ -340,7 +339,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return; 
         }
 
-        if (e.target.tagName === 'IMG') {
+        // 只有成功加载的真实图片才允许点击放大
+        if (e.target.tagName === 'IMG' && e.target.classList.contains('preview-trigger')) {
             const previewImg = document.getElementById('previewImg');
             const imgPreviewModal = document.getElementById('imagePreviewModal');
             previewImg.src = e.target.src; 
@@ -364,47 +364,39 @@ document.addEventListener('DOMContentLoaded', () => {
         const val = e.target.value.trim();
         clearSearchBtn.classList.toggle('show', val.length > 0);
         clearTimeout(searchTimer);
-        searchTimer = setTimeout(() => { 
-            searchKeyword = val; 
-            currentPage = 1;
-            renderCards(); 
-        }, 300);
+        searchTimer = setTimeout(() => { searchKeyword = val; currentPage = 1; renderCards(); }, 300);
     });
 
     clearSearchBtn.addEventListener('click', () => {
-        searchInput.value = ''; 
-        clearSearchBtn.classList.remove('show'); 
-        searchKeyword = ''; 
-        currentPage = 1;
-        renderCards(); 
-        searchInput.focus();
+        searchInput.value = ''; clearSearchBtn.classList.remove('show'); searchKeyword = ''; currentPage = 1;
+        renderCards(); searchInput.focus();
     });
 
+    // 导航栏拖拽逻辑
     let isDown = false, startX, scrollLeft;
     mainNav.addEventListener('mousedown', (e) => { isDown = true; mainNav.style.cursor = 'grabbing'; startX = e.pageX - mainNav.offsetLeft; scrollLeft = mainNav.scrollLeft; });
     mainNav.addEventListener('mouseleave', () => { isDown = false; mainNav.style.cursor = 'grab'; });
     mainNav.addEventListener('mouseup', () => { isDown = false; mainNav.style.cursor = 'grab'; });
     mainNav.addEventListener('mousemove', (e) => { if (isDown) { e.preventDefault(); mainNav.scrollLeft = scrollLeft - (e.pageX - mainNav.offsetLeft - startX) * 2; } });
 
+    // 预览图片弹窗关闭逻辑
     document.getElementById('closePreviewBtn').addEventListener('click', () => { 
         const imgPreviewModal = document.getElementById('imagePreviewModal');
         const previewImg = document.getElementById('previewImg');
-        imgPreviewModal.classList.remove('show'); 
-        setTimeout(() => { previewImg.src = ''; }, 300); 
+        imgPreviewModal.classList.remove('show'); setTimeout(() => { previewImg.src = ''; }, 300); 
     });
     document.getElementById('imagePreviewModal').addEventListener('click', (e) => { 
         const imgPreviewModal = document.getElementById('imagePreviewModal');
         const previewImg = document.getElementById('previewImg');
-        if (e.target === imgPreviewModal) { 
-            imgPreviewModal.classList.remove('show'); 
-            setTimeout(() => { previewImg.src = ''; }, 300); 
-        } 
+        if (e.target === imgPreviewModal) { imgPreviewModal.classList.remove('show'); setTimeout(() => { previewImg.src = ''; }, 300); } 
     });
 
+    // 回到顶部逻辑
     const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => backToTopBtn.classList.toggle('show', window.scrollY > 300));
     backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+    // 免责声明逻辑
     const modal = document.getElementById('disclaimerModal');
     const closeModal = () => modal.classList.remove('show');
     if (!localStorage.getItem('hasReadDisclaimer')) setTimeout(() => modal.classList.add('show'), 300);
@@ -413,8 +405,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('confirmModalBtn').addEventListener('click', () => { closeModal(); localStorage.setItem('hasReadDisclaimer', 'true'); });
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-    // 启动时初始化统计
+    // ==========================================
+    // 7. 启动
+    // ==========================================
     renderPlatformStats();
+    renderRecStats();
     renderTopTabs();
     renderFixedBtn();
     renderNav();

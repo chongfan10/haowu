@@ -24,6 +24,9 @@ window.specialData = `
 
 雨伞的筛选|全网直接搜索168骨雨伞(价格20左右)               第七十二期|https://www.bilibili.com/video/BV1P1fuBSEQe/|
 
+瓜子(无味)|不加 香精和甜味剂up微信：hizida|https://www.bilibili.com/video/BV1zK5u6cEu1/|
+
+
 
 
 `;

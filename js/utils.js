@@ -8,6 +8,7 @@ window.icons = {
     camera: `<svg viewBox="0 0 24 24"><path d="M4 4h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>`
 };
 
+// 解析正片数据
 window.parseGoodsData = function(rawText) {
     if (!rawText) return [];
     const database = [];
@@ -22,15 +23,23 @@ window.parseGoodsData = function(rawText) {
         } else if (currentEpisodeObj) {
             const [name, brand, category, rec, platform, url, image, price, comment] = parts;
             currentEpisodeObj.items.push({
-                name: name || '未命名好物', brand: brand || '暂无描述', category: category || '日用',
-                rec: rec || 'UP主推荐', platform: platform || '', url: url || '', image: image || '',
-                price: price || '价格待定', comment: comment || '暂无评论', videoUrl: ''
+                name: name || '未命名好物', 
+                brand: brand || '暂无描述', 
+                category: category || '未分类',
+                rec: rec || 'UP主推荐', 
+                platform: platform || '', 
+                url: url || '', 
+                image: image || '',
+                price: price || '价格待定', 
+                comment: comment || '暂无评论', 
+                videoUrl: ''
             });
         }
     });
     return database;
 };
 
+// 解析特别补充数据
 window.parseSpecialData = function(rawText) {
     if (!rawText) return [];
     const database = [];
@@ -46,7 +55,7 @@ window.parseSpecialData = function(rawText) {
             const [name, brand, videoUrl, url] = parts;
             currentEpisodeObj.items.push({
                 name: name || '未命名好物', brand: brand || '', videoUrl: videoUrl || '', url: url || '',
-                category: '特别推荐', rec: 'UP主推荐', platform: '', image: '', price: '', comment: ''
+                category: '特别推荐', rec: 'UP主推荐', platform: '', image: '', price: '待定', comment: ''
             });
         }
     });
@@ -54,8 +63,7 @@ window.parseSpecialData = function(rawText) {
 };
 
 window.getPlatformText = function(platform) {
-    const emptyPlatforms = ['未提及', '未提及平台', '无', ''];
-    return emptyPlatforms.includes(platform) ? '' : platform;
+    return ['未提及', '未提及平台', '无', ''].includes(platform) ? '' : platform;
 };
 
 window.formatPrice = function(price) {
@@ -69,25 +77,22 @@ window.highlightText = function(text, keyword) {
     return text.replace(regex, '<span class="highlight">$1</span>');
 };
 
-// 🌟 核心新增：智能中文模糊搜索
+// 智能中文模糊搜索
 window.fuzzyMatch = function(text, keyword) {
     if (!keyword) return true;
     if (!text) return false;
     const t = text.toLowerCase();
     const k = keyword.toLowerCase();
-    
-    // 1. 完全包含（比如搜“鞋子”，如果文本里真有“鞋子”，直接命中）
     if (t.includes(k)) return true;
     
-    // 2. 去除常见中文后缀/单位后再匹配（比如“鞋子”变“鞋”，“运动装”变“运动”）
+    // 去除常见后缀
     const cleanK = k.replace(/[的地得子装款件套个只把条张块们些类机具]+$/g, '').trim();
     if (cleanK && t.includes(cleanK)) return true;
     
-    // 3. 支持多词拆分布局（比如搜“鞋 白色”，只要都包含就行）
+    // 多词匹配
     if (k.includes(' ')) {
         const parts = k.split(/\s+/).filter(Boolean);
         if (parts.length > 1 && parts.every(part => t.includes(part))) return true;
     }
-
     return false;
 };

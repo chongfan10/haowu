@@ -13,26 +13,21 @@
 </head>
 <body>
     <div class="container">
-        <!-- 头部 -->
+        <!-- 头部重构 -->
         <header>
-            <div class="title-area">
-                <h1>UP好物推荐合集</h1>
-                <div class="video-link-area" id="videoLinkArea">
-                    <span style="opacity: 0.5;">正在加载传送门...</span>
+            <div class="header-top">
+                <div class="title-area">
+                    <h1>UP好物推荐合集</h1>
+                    <div class="video-link-area" id="videoLinkArea">
+                        <span style="opacity: 0.5;">正在加载传送门...</span>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- 右侧包裹容器 -->
-            <div class="header-right">
-                <!-- 平台统计栏 -->
-                <div id="platformStats" class="platform-stats"></div>
                 
                 <div class="search-area">
                     <button class="disclaimer-btn" id="openDisclaimerBtn">
                         <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
                         免责声明
                     </button>
-
                     <div class="search-input-wrapper">
                         <input type="text" id="searchInput" placeholder="搜索好物或品牌...">
                         <button id="clearSearchBtn" class="clear-btn" title="清空">
@@ -44,12 +39,17 @@
                     </button>
                 </div>
             </div>
+
+            <!-- 下方统计栏：把原来的左右不对称变成横向铺开 -->
+            <div class="header-bottom">
+                <div id="platformStats" class="platform-stats"></div>
+                <div class="stats-divider"></div>
+                <div id="recStats" class="rec-stats"></div>
+            </div>
         </header>
 
-        <!-- 顶层分类切换 -->
         <div id="mainTabs" class="main-tabs"></div>
 
-        <!-- 导航栏 -->
         <div class="nav-wrapper">
             <div id="fixedNavArea" class="fixed-nav-area"></div>
             <div class="nav-scroll-wrapper">
@@ -57,16 +57,14 @@
             </div>
         </div>
 
-        <!-- 卡片网格 -->
         <main class="grid" id="cardGrid">
             <div class="empty-state">正在加载好物数据...</div>
         </main>
 
-        <!-- 分页容器 -->
         <div id="pagination" class="pagination"></div>
     </div>
 
-    <!-- 免责声明弹窗 -->
+    <!-- 弹窗结构保持不变 -->
     <div id="disclaimerModal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-header">
@@ -88,7 +86,6 @@
         </div>
     </div>
 
-    <!-- 图片预览模态框 -->
     <div id="imagePreviewModal" class="image-preview-modal">
         <div class="image-preview-content">
             <button class="close-preview-btn" id="closePreviewBtn">
@@ -98,13 +95,11 @@
         </div>
     </div>
 
-    <!-- 回到顶部按钮 -->
     <div id="backToTop" class="back-to-top" title="回到顶部">
         <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
         <span>顶部</span>
     </div>
 
-    <!-- 引用顺序 -->
     <script src="js/data.js"></script>
     <script src="js/special_data.js"></script>
     <script src="js/utils.js"></script>
